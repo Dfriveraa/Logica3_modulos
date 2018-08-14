@@ -38,11 +38,8 @@ class Pol6:
         r = self.__class__()
         for i in range(len(self.coefs)):
             for j in range(len(q.coefs)):
-                w=len(self.coefs)-1
-                x=len(q.coefs)-1
-                
-                r.add_term(i*j,w+x)    
-
+                r.add_term(self.coefs[i]*q.coefs[j],i+j)    
+        r.show()
         return r
     
     def show(self):
