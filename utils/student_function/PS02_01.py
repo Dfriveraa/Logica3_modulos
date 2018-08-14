@@ -14,7 +14,6 @@ class Pol1:
     def add_term(self, c, e):
         k = np.searchsorted(self.exps,e)
  
-        print k
         if len(self.exps)==0:
             self.exps=[e]
             self.coefs=[c]
