@@ -57,11 +57,10 @@ def wait_for_auth(timeout=30, PORT_NUMBER=8080):
                 html = '<html><body onload="self.close();"/>closing</html>'
                 self.wfile.write(html)
                 # Send the html message
-                q = urlparse(self.path).query
-                tokens = q.split("=")
-                if len(tokens)==2 and tokens[0]=="code":
+                q = parse_qs(urlparse(self.path).query)
+                if "code" in q:
                     print "authentication succeeded"
-                    oauth_code = tokens[1]
+                    oauth_code = q["code"][0]
                 else:
                     print q
                 return
