@@ -14,9 +14,9 @@ class BTNode(PS07.BTNode):
     def balance_factor(self):
         a=0;b=0
         if self.left is not None:
-            a=self.left.height()+1
+            a=self.left.height()
         if self.right is not None:
-            b=self.right.height()+1
+            b=self.right.height()
         result=(a-b)
         
         return result
