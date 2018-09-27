@@ -45,9 +45,10 @@ class VBinTree(PS06.VBinTree):
                 
     def sort(self):
         end = len(self.v)-1
+        self.make_heap()
         for i in range(end, -1, -1):
             self.v[i], self.v[0] = self.v[0], self.v[i]
-            self.shift_down(i)
+            self.shift_down(0,i-1)
         return self
         
     
