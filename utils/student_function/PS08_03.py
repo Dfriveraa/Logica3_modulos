@@ -60,11 +60,15 @@ class Graph():
         if node_number_2 in self.nodes[node_number_1] or node_number_1 in self.nodes[node_number_2]:
             return True
         return False
-        
+
     def is_valid_trayectory(self, trayectory):
-        assert type(trayectory)==list, "trayectory must be a list"  
-        for i in range(len(trayectory)-1):
-            if not self.are_adyacent(trayectory[i],trayectory[i+1]):return False
+        assert type(trayectory)==list, "trayectory must be a list"
+        if self.is_directed:
+            for i in range(len(trayectory)-1):
+                if not trayectory[i+1] in self.nodes[trayectory[i]]:return False
+        else:
+            for i in range(len(trayectory)-1):
+                if not self.are_adyacent(trayectory[i],trayectory[i+1]):return False
         return True
     
     def as_nx(self):
